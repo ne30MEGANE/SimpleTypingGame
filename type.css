@@ -1,0 +1,16 @@
+body{
+    margin: 20px;
+    text-align: center;
+    background-color: #edeff1;
+    color: #586a66;
+}
+h1 {
+    color: white;   
+    background-color: #ff8fa5;
+}
+#gamearea{
+    background-color: white;
+    font-size: large;
+    padding :20px;
+    margin-top:20px;
+}
