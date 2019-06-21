@@ -20,7 +20,7 @@ let Qest = new Array; //全部の問題
 let length = 10; //1問の文字数
 let mondai = "";
 let cnt = ""; //何文字目か
-//let Qn = 0; //何問目か
+let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
 
 function Main() {
@@ -33,10 +33,10 @@ function Main() {
 
 }
 function buttonAction() {
-    //Qn = 0; //スタートが押されたら1問目に戻す
+    Qn = 0; //スタートが押されたら1問目に戻す
     misstype = 0;
     gameSet();
-    console.log(Qest[/*Qn*/0]);
+    console.log(Qest);//for debug
 }
 function NewQest(n, len) { //n個の問題を作成する
     for (let i = 0; i < n; i++) {
@@ -65,9 +65,11 @@ function changedifficulty() { //難易度に応じて出題数を変える
 function gameSet() {
     mondai = "";
     cnt = 0;
+    Qn = 0;
+    Qest.length = 0; //問題の配列をリセットする
     NewQest(Q_num, length);
     for (let i = 0; i < length; i++) { //問題を表示
-        mondai = mondai + moji[Qest[/*Qn*/0][i]];
+        mondai = mondai + moji[Qest[Qn][i]];
     }
     gamearea.innerHTML = mondai;
 }
@@ -84,23 +86,40 @@ function typeGame(evt) {
     //kc = eve.which;
     //}
 
-    if (cnt == 0) {//開始秒記録
+    if (cnt == 0 && Qn == 0) {//開始秒記録
         typStart = new Date();
     }
 
-    if (kc == kcode[Qest[/*Qn*/0][cnt]]) {//正解したら
+    if (kc == kcode[Qest[Qn][cnt]]) {//正解したら
         cnt++;
-        if (cnt < 10) {//
+        console.log(cnt);
+        if (cnt < 10) {
             mondai = mondai.substring(1, mondai.length);
             gamearea.innerHTML = mondai;
         } else {//10文字正解した
-            typEnd = new Date();
-            var keika = typEnd - typStart;
-            var sec = Math.floor(keika / 1000);
-            var msec = keika % 1000;
-            var message = "ミスタイプ：" + misstype + "　　時間：" + sec + "秒" + msec;
-            gamearea.innerHTML = message;
+            console.log("b");
+            cnt = 0; //1問目に戻す
+            Qn++;
+            if (Qn < Q_num) {
+                if (Qn != Q_num) {
+                    mondai = "";
+                    for (let i = 0; i < length; i++) { //問題を表示
+                        mondai = mondai + moji[Qest[Qn][i]];
+                    }
+                    console.log(mondai); //for debug
+                }
+                gamearea.innerHTML = mondai;
+                console.log(Qn);
+            } else {//全部問題終わったら
+                typEnd = new Date();
+                var keika = typEnd - typStart;
+                var sec = Math.floor(keika / 1000);
+                var msec = keika % 1000;
+                var message = "ミスタイプ：" + misstype + "　　時間：" + sec + "秒" + msec;
+                gamearea.innerHTML = message;
+            }
         }
+
     } else {//間違えたとき}
         misstype++;
     }

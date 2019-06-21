@@ -20,7 +20,7 @@ let Qest = new Array; //全部の問題
 let length = 10; //1問の文字数
 let mondai = "";
 let cnt = ""; //何文字目か
-//let Qn = 0; //何問目か
+let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
 
 function Main() {
