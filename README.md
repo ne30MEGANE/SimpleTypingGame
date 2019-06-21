@@ -9,4 +9,4 @@ CSSを適用しました。
 2019/6/21 更新
 難易度変更機能を実装。EASY~HARDの３段階から選べて、問題数がそれぞれ変わります。
 <br>
-https://ne30MEGANE.github.io/SimpleTypingGame
+https://ne30megane.github.io/SimpleTypingGame/
