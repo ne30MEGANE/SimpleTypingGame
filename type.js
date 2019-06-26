@@ -15,6 +15,7 @@ var kcode = new Array(65, 66, 67, 68, 69, 70, 71, 72, 73,
 let startbutton;
 var gamearea, dropDown, tweetbutton;
 let Q_num = 3; //難易度の内部データ
+let difficulty = "" //難易度名前
 let Q = new Array; //問題
 let Qest = new Array; //全部の問題
 let length = 10; //1問の文字数
@@ -57,10 +58,13 @@ function ransu(len) { //len文字の問題を作る
 function changedifficulty() { //難易度に応じて出題数を変える
     if (dropDown.value == "EASY") {
         Q_num = 3;
+        difficulty = "EASY";
     } else if (dropDown.value == "NORMAL") {
         Q_num = 5;
+        difficulty = "NORMAL";
     } else if (dropDown.value == "HARD") {
         Q_num = 10;
+        difficulty = "HARD";
     }
     //console.log(dropDown.value); //for debug
     //console.log(Q_num); // for debug
@@ -122,7 +126,7 @@ function typeGame(evt) {
                 var msec = keika % 1000;
                 var message = "ミスタイプ：" + misstype + "　　時間：" + sec + "秒" + msec;
                 gamearea.innerHTML = message;
-                tweetmessage = "https://twitter.com/intent/tweet?text=ガバタイピングゲームを" + sec + "秒" + msec + "でクリアしました。%0aガバタイピングゲーム%20@kina_tn%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+                tweetmessage = "https://twitter.com/intent/tweet?text=ガバタイピングゲーム(" + difficulty + ")を" + sec + "秒" + msec + "でクリアしました。%0aミスタイプ：" + misstype + "%0aガバタイピングゲーム%20kina_tnより%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
                 tweetbutton.href = tweetmessage;
             }
         }
