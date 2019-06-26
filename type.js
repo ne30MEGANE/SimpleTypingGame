@@ -13,7 +13,7 @@ var kcode = new Array(65, 66, 67, 68, 69, 70, 71, 72, 73,
 
 //グローバル変数たち
 let startbutton;
-var gamearea, dropDown;
+var gamearea, dropDown, tweetbutton;
 let Q_num = 3; //難易度の内部データ
 let Q = new Array; //問題
 let Qest = new Array; //全部の問題
@@ -22,6 +22,7 @@ let mondai = "";
 let cnt = ""; //何文字目か
 let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
+let tweetmessage = "https://twitter.com/share?text=ガバタイピングゲーム&screen_name=kina_tn";
 
 function Main() {
     startbutton = document.getElementById("startbutton");
@@ -31,12 +32,14 @@ function Main() {
     dropDown = document.getElementById('difficultyselecter');
     dropDown.addEventListener('change', changedifficulty);
 
+    tweetbutton = document.getElementById('tweet');
+    tweetbutton.href = tweetmessage;
 }
 function buttonAction() {
     Qn = 0; //スタートが押されたら1問目に戻す
     misstype = 0;
     gameSet();
-    console.log(Qest);//for debug
+    //console.log(Qest);//for debug
 }
 function NewQest(n, len) { //n個の問題を作成する
     for (let i = 0; i < n; i++) {
@@ -58,8 +61,8 @@ function changedifficulty() { //難易度に応じて出題数を変える
     } else if (dropDown.value == "HARD") {
         Q_num = 10;
     }
-    console.log(dropDown.value); //for debug
-    console.log(Q_num); // for debug
+    //console.log(dropDown.value); //for debug
+    //console.log(Q_num); // for debug
 }
 
 function gameSet() {
@@ -123,5 +126,9 @@ function typeGame(evt) {
     } else {//間違えたとき}
         misstype++;
     }
+
+}
+
+function newtweet() {
 
 }
