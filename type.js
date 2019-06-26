@@ -22,7 +22,7 @@ let mondai = "";
 let cnt = ""; //何文字目か
 let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
-let tweetmessage = "https://twitter.com/share?text=ガバタイピングゲーム&screen_name=kina_tn";
+let tweetmessage = "https://twitter.com/share?text=ガバタイピングゲーム?url=https://ne30megane.github.io/SimpleTypingGame/http://www.shurey.com&screen_name=kina_tn";
 
 function Main() {
     startbutton = document.getElementById("startbutton");
