@@ -22,7 +22,7 @@ let mondai = "";
 let cnt = ""; //何文字目か
 let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
-let tweetmessage = "https://twitter.com/intent/tweet?text=ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+let tweet = "https://twitter.com/intent/tweet?text=ガバタイピングゲーム%20@kina_tn%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
 
 
 function Main() {
@@ -34,7 +34,7 @@ function Main() {
     dropDown.addEventListener('change', changedifficulty);
 
     tweetbutton = document.getElementById('tweet');
-    tweetbutton.href = tweetmessage;
+    tweetbutton.href = tweet;
 }
 function buttonAction() {
     Qn = 0; //スタートが押されたら1問目に戻す
@@ -80,6 +80,7 @@ function gameSet() {
 
 //タイムに関するグローバル変数
 var typStart, typEnd;
+let tweetmessage = "";
 
 function typeGame(evt) {
     let kc; //入力されたキーのキーコードを格納する
@@ -121,15 +122,13 @@ function typeGame(evt) {
                 var msec = keika % 1000;
                 var message = "ミスタイプ：" + misstype + "　　時間：" + sec + "秒" + msec;
                 gamearea.innerHTML = message;
+                tweetmessage = "https://twitter.com/intent/tweet?text=ガバタイピングゲームを" + sec + "秒" + msec + "でクリアしました。%0aガバタイピングゲーム%20@kina_tn%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+                tweetbutton.href = tweetmessage;
             }
         }
 
     } else {//間違えたとき}
         misstype++;
     }
-
-}
-
-function newtweet() {
 
 }
