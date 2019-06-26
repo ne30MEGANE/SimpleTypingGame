@@ -14,3 +14,13 @@ h1 {
     margin-top:20px;
     padding: 25px;
 }
+#twitter{
+    text-align: center;
+    margin: 20px;
+}
+footer a:link{
+    color: #c25067;
+}
+footer a:visited{
+    color: #682a37;
+}
