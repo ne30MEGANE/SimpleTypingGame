@@ -1,5 +1,5 @@
 body{
-    margin: 20px;
+    margin: 0 15%;
     text-align: center;
     background-color: #edeff1;
     color: #586a66;
@@ -10,7 +10,7 @@ h1 {
 }
 #gamearea{
     background-color: white;
-    font-size: large;
-    padding :20px;
+    font-size: 34px;
     margin-top:20px;
+    padding: 25px;
 }
