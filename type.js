@@ -23,7 +23,7 @@ let mondai = "";
 let cnt = ""; //何文字目か
 let Qn = 0; //何問目か
 let misstype = 0;//間違えた回数
-let tweet = "https://twitter.com/intent/tweet?text=ガバタイピングゲーム%20kina_tnより%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+let tweet = "https://twitter.com/intent/tweet?hashtags=ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
 
 
 function Main() {
@@ -124,9 +124,9 @@ function typeGame(evt) {
                 var keika = typEnd - typStart;
                 var sec = Math.floor(keika / 1000);
                 var msec = keika % 1000;
-                var message = "ミスタイプ：" + misstype + "　　時間：" + sec + "秒" + msec;
+                var message = "ミスタイプ：" + misstype + "回<br>時間：" + sec + "秒" + msec;
                 gamearea.innerHTML = message;
-                tweetmessage = "https://twitter.com/intent/tweet?text=ガバタイピングゲーム(" + difficulty + ")を" + sec + "秒" + msec + "でクリアしました。%20ミスタイプ：" + misstype + "%0aガバタイピングゲーム%20kina_tnより%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+                tweetmessage = "https://twitter.com/intent/tweet?text=難易度" + difficulty + "を" + sec + "秒" + msec + "でクリアしました。%20ミスタイプ：" + misstype + "%0a%23ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
                 tweetbutton.href = tweetmessage;
             }
         }
