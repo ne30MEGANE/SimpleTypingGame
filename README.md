@@ -11,8 +11,10 @@ CSSを適用しました。
 <br>
 ## 2019/6/27 更新
 ツイートボタンを実装しました。CSSをアップデートしました。<br>
-[kitstrap](https://github.com/mtsgi/kitstrap)
+CSSの一部に[kitstrap](https://github.com/mtsgi/kitstrap)を導入しました。
+<br>
+## 2019/9/21 更新
+ページのレイアウトを調整し、遊び方説明を追加しました。
 <br>
 <hr>
-
 [ガバタイピングゲームをプレイ](https://ne30megane.github.io/SimpleTypingGame/)
