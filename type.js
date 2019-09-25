@@ -29,6 +29,7 @@ let tweet = "https://twitter.com/intent/tweet?hashtags=ガバタイピングゲ�
 function Main() {
     startbutton = document.getElementById("startbutton");
     gamearea = document.getElementById("gamearea");
+    dataarea = document.getElementById("data");
     startbutton.addEventListener("click", buttonAction);
 
     dropDown = document.getElementById('difficultyselecter');
@@ -80,6 +81,7 @@ function gameSet() {
         mondai = mondai + moji[Qest[Qn][i]];
     }
     gamearea.innerHTML = mondai;
+    dataarea.innerHTML = "ミスタイプ" + misstype + "回";
 }
 
 //タイムに関するグローバル変数
@@ -90,7 +92,7 @@ function typeGame(evt) {
     let kc; //入力されたキーのキーコードを格納する
     //if (document.all) {
     kc = event.keyCode;
-    console.log(kc);
+    // console.log(kc);  //for debug
     //} else {
     //kc = eve.which;
     //}
@@ -101,12 +103,12 @@ function typeGame(evt) {
 
     if (kc == kcode[Qest[Qn][cnt]]) {//正解したら
         cnt++;
-        console.log(cnt);
+        // console.log(cnt);  //for debug
         if (cnt < 10) {
             mondai = mondai.substring(1, mondai.length);
             gamearea.innerHTML = mondai;
         } else {//10文字正解した
-            console.log("b");
+            // console.log("b"); //debug
             cnt = 0; //1問目に戻す
             Qn++;
             if (Qn < Q_num) {
@@ -115,10 +117,10 @@ function typeGame(evt) {
                     for (let i = 0; i < length; i++) { //問題を表示
                         mondai = mondai + moji[Qest[Qn][i]];
                     }
-                    console.log(mondai); //for debug
+                    // console.log(mondai); //for debug
                 }
                 gamearea.innerHTML = mondai;
-                console.log(Qn);
+                // console.log(Qn);
             } else {//全部問題終わったら
                 typEnd = new Date();
                 var keika = typEnd - typStart;
@@ -126,6 +128,7 @@ function typeGame(evt) {
                 var msec = keika % 1000;
                 var message = "ミスタイプ：" + misstype + "回<br>時間：" + sec + "秒" + msec;
                 gamearea.innerHTML = message;
+                dataarea.innerHTML = ""
                 tweetmessage = "https://twitter.com/intent/tweet?text=難易度" + difficulty + "を" + sec + "秒" + msec + "でクリアしました。%20ミスタイプ：" + misstype + "%0a%23ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
                 tweetbutton.href = tweetmessage;
             }
@@ -133,6 +136,7 @@ function typeGame(evt) {
 
     } else {//間違えたとき}
         misstype++;
+        dataarea.innerHTML = "ミスタイプ" + misstype + "回";
     }
 
 }
