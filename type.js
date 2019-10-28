@@ -14,41 +14,57 @@ var kcode = new Array(65, 66, 67, 68, 69, 70, 71, 72, 73,
 //グローバル変数たち
 let startbutton;
 var gamearea, dropDown, tweetbutton;
+let errorArea;
 let Q_num = 3; //難易度の内部データ
-let difficulty = "EASY" //難易度名前
+let difficulty; //難易度の名前
 let Q = new Array; //問題
 let Qest = new Array; //全部の問題
 let length = 10; //1問の文字数
 let mondai = "";
 let cnt = ""; //何文字目か
 let Qn = 0; //何問目か
-let misstype = 0;//間違えた回数
+let misstype = 0; //間違えた回数
 let tweet = "https://twitter.com/intent/tweet?hashtags=ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
 
 
 function Main() {
     startbutton = document.getElementById("startbutton");
     gamearea = document.getElementById("gamearea");
+    errorArea = document.getElementById('error')
     dataarea = document.getElementById("data");
-    startbutton.addEventListener("click", buttonAction);
 
-    dropDown = document.getElementById('difficultyselecter');
-    dropDown.addEventListener('change', changedifficulty);
+    difficultyform = document.getElementsByName('diff');
+    startButton = document.getElementById('startbutton');
+    startButton.addEventListener("click", buttonAction);
 
     tweetbutton = document.getElementById('tweet');
     tweetbutton.href = tweet;
 }
+
 function buttonAction() {
     Qn = 0; //スタートが押されたら1問目に戻す
     misstype = 0;
-    gameSet();
-    //console.log(Qest);//for debug
+    errorArea.innerHTML = ""
+    for (let i = 0; i < difficultyform.length; i++) { //難易度を取得
+        if (difficultyform[i].checked) {
+            difficulty = difficultyform[i].value;
+            break;
+        }
+    }
+    if (difficulty == undefined) { // 未選択の時
+        errorArea.innerHTML = "難易度を選んでください。";
+    } else {
+        changedifficulty(difficulty);
+        gameSet();
+    }
 }
+
 function NewQest(n, len) { //n個の問題を作成する
     for (let i = 0; i < n; i++) {
         ransu(len); //10文字の問題を作る
     }
 }
+
 function ransu(len) { //len文字の問題を作る
     let Q = new Array;
     for (let i = 0; i < len; i++) {
@@ -56,19 +72,24 @@ function ransu(len) { //len文字の問題を作る
     }
     Qest.push(Q);
 }
-function changedifficulty() { //難易度に応じて出題数を変える
-    if (dropDown.value == "EASY") {
-        Q_num = 3;
-        difficulty = "EASY";
-    } else if (dropDown.value == "NORMAL") {
-        Q_num = 5;
-        difficulty = "NORMAL";
-    } else if (dropDown.value == "HARD") {
-        Q_num = 10;
-        difficulty = "HARD";
+
+function changedifficulty(d) { //難易度に応じて出題数を変える
+    switch (d) {
+        case "EASY":
+            Q_num = 3;
+            difficulty = "EASY";
+            break;
+        case "NORMAL":
+            Q_num = 5;
+            difficulty = "NORMAL";
+            break;
+        case "HARD":
+            Q_num = 10;
+            difficulty = "HARD";
+            break;
+        default: //難易度を選ばずにスタートが押されたとき
+            break;
     }
-    //console.log(dropDown.value); //for debug
-    //console.log(Q_num); // for debug
 }
 
 function gameSet() {
@@ -90,25 +111,18 @@ let tweetmessage = "";
 
 function typeGame(evt) {
     let kc; //入力されたキーのキーコードを格納する
-    //if (document.all) {
     kc = event.keyCode;
-    // console.log(kc);  //for debug
-    //} else {
-    //kc = eve.which;
-    //}
 
-    if (cnt == 0 && Qn == 0) {//開始秒記録
+    if (cnt == 0 && Qn == 0) { //開始秒記録
         typStart = new Date();
     }
 
-    if (kc == kcode[Qest[Qn][cnt]]) {//正解したら
+    if (kc == kcode[Qest[Qn][cnt]]) { //正解したら
         cnt++;
-        // console.log(cnt);  //for debug
         if (cnt < 10) {
             mondai = mondai.substring(1, mondai.length);
             gamearea.innerHTML = mondai;
-        } else {//10文字正解した
-            // console.log("b"); //debug
+        } else { //10文字正解した
             cnt = 0; //1問目に戻す
             Qn++;
             if (Qn < Q_num) {
@@ -117,11 +131,9 @@ function typeGame(evt) {
                     for (let i = 0; i < length; i++) { //問題を表示
                         mondai = mondai + moji[Qest[Qn][i]];
                     }
-                    // console.log(mondai); //for debug
                 }
                 gamearea.innerHTML = mondai;
-                // console.log(Qn);
-            } else {//全部問題終わったら
+            } else { //全部問題終わったら
                 typEnd = new Date();
                 var keika = typEnd - typStart;
                 var sec = Math.floor(keika / 1000);
@@ -134,7 +146,7 @@ function typeGame(evt) {
             }
         }
 
-    } else {//間違えたとき}
+    } else { //間違えたとき}
         misstype++;
         dataarea.innerHTML = "ミスタイプ" + misstype + "回";
     }

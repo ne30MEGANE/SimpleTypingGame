@@ -1,33 +1,43 @@
-body{
+body {
     margin: 0 15%;
     text-align: center;
     background-color: #edeff1;
     color: #586a66;
 }
+
 h1 {
-    color: white;   
+    color: white;
     background-color: #ff8fa5;
 }
-#gamearea{
+
+#gamearea {
     background-color: white;
     font-size: 34px;
-    margin-top:20px;
+    margin-top: 20px;
     padding: 25px;
 }
-#data{
+
+#data {
     text-align: right;
     background-color: white;
     font-size: 20px;
     margin: 0px;
     padding: 5px;
 }
-#twitter{
+
+#twitter {
     text-align: center;
     margin: 20px;
 }
-footer a:link{
+
+footer a:link {
     color: #c25067;
 }
-footer a:visited{
+
+footer a:visited {
     color: #682a37;
+}
+
+#error {
+    color: #c25067;
 }

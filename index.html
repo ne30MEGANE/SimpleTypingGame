@@ -14,21 +14,21 @@
     <div id="howto">
         <h2>遊び方</h2>
         <p>
-            難易度を選んでゲームスタート！<br>
-            下のエリアに表示されるアルファベットを左から順番にタイプしよう。<br>
-            何秒でクリアできるかな！？
+            難易度を選んでゲームスタート！<br> 下のエリアに表示されるアルファベットを左から順番にタイプしよう。
+            <br> 速く正確に入力してハイスコアを狙え！
         </p>
     </div>
-    <form>
-        <button type="button" id="startbutton">GAME START!</button>
-        <!--スタートボタン-->
-        <select name="difficulty" id="difficultyselecter">
-            <option value="EASY">EASY</option>
-            <option value="NORMAL">NORMAL</option>
-            <option value="HARD">HARD</option>
-        </select>
-        <!--難易度選ぶ-->
+    <form id="difficulty">
+        <label><input type="radio" name="diff" value="EASY" id="easy">EASY</label>
+        <label><input type="radio" name="diff" value="NORMAL" id="normal">NORMAL</label>
+        <label><input type="radio" name="diff" value="HARD" id="hard">HARD</label>
+        <br>
+        <label id="error"></label>
+        <br>
+        <button type="button" id="startbutton" class="kit-button silver">GAME START!</button>
     </form>
+
+
     <div id="gamearea">
         <p></p>
         <!--ゲームの画面が出る場所-->
@@ -38,9 +38,9 @@
         <!--ミスタイプ数表示-->
     </div>
     <div id="twitter">
-        <a id="tweet" href=""" target=" _blank" class="kit-button">ツイート</a>
+        <a id="tweet" href="" " target=" _blank " class="kit-button ">ツイート</a>
     </div>
-    <div id="info">
+    <div id="info ">
         <h2>更新情報</h2>
         <p>
             2019/6/21 難易度変更が機能するようにしました！<br>
@@ -50,9 +50,9 @@
         </p>
     </div>
     <footer>
-        <a href="https://mtsgi.github.io/pizzada/" target=" _blank">ピザ打を遊んでみる</a>
+        <a href="https://mtsgi.github.io/pizzada/ " target=" _blank ">ピザ打を遊んでみる</a>
         <br>
-        <p>制作 めがね<a href="https://twitter.com/kina_tn">@kina_tn</a></p>
+        <p>制作 めがね<a href="https://twitter.com/kina_tn ">@kina_tn</a></p>
     </footer>
 
 </body>
