@@ -28,5 +28,11 @@ CSSの一部に[kitstrap](https://github.com/mtsgi/kitstrap)を導入しまし�
 ゲームプレイ中にミスタイプ数をリアルタイムで表示するように改善しました。
 
 
+
+## 2019/10/28 更新
+難易度変更機能のUIをドロップダウンからラジオボタンに変更しました。
+
+
+<hr>
    
 [ガバタイピングゲームをプレイ](https://ne30megane.github.io/SimpleTypingGame/)
