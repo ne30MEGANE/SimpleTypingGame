@@ -26,6 +26,8 @@ let Qn = 0; //何問目か
 let misstype = 0; //間違えた回数
 let tweet = "https://twitter.com/intent/tweet?hashtags=ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
 
+let score = 0;
+let difnum;
 
 function Main() {
     startbutton = document.getElementById("startbutton");
@@ -77,14 +79,17 @@ function changedifficulty(d) { //難易度に応じて出題数を変える
     switch (d) {
         case "EASY":
             Q_num = 3;
+            difnum = 15;
             difficulty = "EASY";
             break;
         case "NORMAL":
             Q_num = 5;
+            difnum = 45;
             difficulty = "NORMAL";
             break;
         case "HARD":
             Q_num = 10;
+            difnum = 90;
             difficulty = "HARD";
             break;
         default: //難易度を選ばずにスタートが押されたとき
@@ -96,13 +101,14 @@ function gameSet() {
     mondai = "";
     cnt = 0;
     Qn = 0;
+    score = 0;
     Qest.length = 0; //問題の配列をリセットする
     NewQest(Q_num, length);
     for (let i = 0; i < length; i++) { //問題を表示
         mondai = mondai + moji[Qest[Qn][i]];
     }
     gamearea.innerHTML = mondai;
-    dataarea.innerHTML = "ミスタイプ " + misstype + "回";
+    dataarea.innerHTML = "スコア: " + score;
 }
 
 //タイムに関するグローバル変数
@@ -119,6 +125,7 @@ function typeGame(evt) {
 
     if (kc == kcode[Qest[Qn][cnt]]) { //正解したら
         cnt++;
+        score += 2;
         if (cnt < 10) {
             mondai = mondai.substring(1, mondai.length);
             gamearea.innerHTML = mondai;
@@ -138,17 +145,19 @@ function typeGame(evt) {
                 var keika = typEnd - typStart;
                 var sec = Math.floor(keika / 1000);
                 var msec = keika % 1000;
+                let timebonus = difnum - sec;
+                score += timebonus;
                 var message = "ミスタイプ：" + misstype + "回<br>時間：" + sec + "秒" + msec;
                 gamearea.innerHTML = message;
                 dataarea.innerHTML = ""
-                tweetmessage = "https://twitter.com/intent/tweet?text=難易度" + difficulty + "を" + sec + "秒" + msec + "でクリアしました。%20ミスタイプ：" + misstype + "%0a%23ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
+                tweetmessage = "https://twitter.com/intent/tweet?text=難易度" + difficulty + "で" + score + "点獲得しました！%20時間" + sec + "秒" + msec + " (ミスタイプ " + misstype + "回)%0a%23ガバタイピングゲーム%0a&url=https://ne30megane.github.io/SimpleTypingGame/";
                 tweetbutton.href = tweetmessage;
             }
         }
 
     } else { //間違えたとき}
         misstype++;
-        dataarea.innerHTML = "ミスタイプ" + misstype + "回";
+        score -= 5;
     }
-
+    dataarea.innerHTML = "スコア: " + score;
 }
