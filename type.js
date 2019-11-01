@@ -79,12 +79,12 @@ function changedifficulty(d) { //難易度に応じて出題数を変える
     switch (d) {
         case "EASY":
             Q_num = 3;
-            difnum = 20;
+            difnum = 24;
             difficulty = "EASY";
             break;
         case "NORMAL":
             Q_num = 5;
-            difnum = 25;
+            difnum = 40;
             difficulty = "NORMAL";
             break;
         case "HARD":
