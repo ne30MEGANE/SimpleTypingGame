@@ -15,19 +15,24 @@ h1 {
     font-size: 34px;
     margin-top: 20px;
     padding: 25px;
+    height: 84px;
 }
 
 #data {
     text-align: right;
-    background-color: white;
     font-size: 20px;
     margin: 0px;
     padding: 5px;
+    height: 30px;
 }
 
 #twitter {
     text-align: center;
     margin: 20px;
+}
+
+footer {
+    margin-top: 25px;
 }
 
 footer a:link {
