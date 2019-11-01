@@ -18,6 +18,11 @@ h1 {
     height: 84px;
 }
 
+#gamearea a:link {
+    text-align: center;
+    font-size: 16px;
+}
+
 #data {
     font-size: 20px;
     margin: 0px;
