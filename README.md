@@ -15,7 +15,7 @@ CSSを適用しました。
 
 ## 2019/6/27 更新
 ツイートボタンを実装しました。CSSをアップデートしました。<br>
-CSSの一部に[kitstrap](https://github.com/mtsgi/kitstrap)を導入しました。
+[kitstrap](https://github.com/mtsgi/kitstrap)を導入しました。
 
 
 
