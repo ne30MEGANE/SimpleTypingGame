@@ -19,11 +19,31 @@ h1 {
 }
 
 #data {
-    text-align: right;
     font-size: 20px;
     margin: 0px;
     padding: 5px;
     height: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+}
+
+#time {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    text-align: left;
+}
+
+#misstype {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-align: center;
+}
+
+#score {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    text-align: right;
 }
 
 #twitter {
