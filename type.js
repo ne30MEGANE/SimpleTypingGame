@@ -79,17 +79,17 @@ function changedifficulty(d) { //難易度に応じて出題数を変える
     switch (d) {
         case "EASY":
             Q_num = 3;
-            difnum = 15;
+            difnum = 20;
             difficulty = "EASY";
             break;
         case "NORMAL":
             Q_num = 5;
-            difnum = 45;
+            difnum = 25;
             difficulty = "NORMAL";
             break;
         case "HARD":
             Q_num = 10;
-            difnum = 90;
+            difnum = 100;
             difficulty = "HARD";
             break;
         default: //難易度を選ばずにスタートが押されたとき
@@ -157,7 +157,8 @@ function typeGame(evt) {
 
     } else { //間違えたとき}
         misstype++;
-        score -= 5;
+        if (score - 5 > 0) score -= 5;
+        else score = 0;
     }
     dataarea.innerHTML = "スコア: " + score;
 }
