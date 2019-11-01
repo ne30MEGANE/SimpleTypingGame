@@ -102,7 +102,7 @@ function gameSet() {
         mondai = mondai + moji[Qest[Qn][i]];
     }
     gamearea.innerHTML = mondai;
-    dataarea.innerHTML = "ミスタイプ" + misstype + "回";
+    dataarea.innerHTML = "ミスタイプ " + misstype + "回";
 }
 
 //タイムに関するグローバル変数
